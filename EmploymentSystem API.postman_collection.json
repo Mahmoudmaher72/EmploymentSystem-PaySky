@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "0df40d93-05c6-4c2e-93aa-4359c808cebc",
+		"name": "EmploymentSystem API",
+		"description": "API documentation for EmploymentSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22900524"
+	},
+	"item": [
+		{
+			"name": "Applicant",
+			"item": [
+				{
+					"name": "Get Vacancies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Applicant/vacancies?OnlyActive={{OnlyActive}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Applicant",
+								"vacancies"
+							],
+							"query": [
+								{
+									"key": "OnlyActive",
+									"value": "{{OnlyActive}}",
+									"description": "Whether to only include active vacancies"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply for Vacancy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vacancyId\": 1,\n  \"applicantId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Applicant/apply-vacancy",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Applicant",
+								"apply-vacancy"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"newuser\",\n  \"password\": \"password123\",\n  \"email\": \"newuser@example.com\",\n  \"roleName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"maher1\",\n  \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employer",
+			"item": [
+				{
+					"name": "Create Vacancy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"New Vacancy\",\n  \"description\": \"Job Description\",\n  \"expiryDate\": \"2023-12-31T23:59:59\",\n  \"maxApplications\": 100,\n  \"employerId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Employer/create-vacancy",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Employer",
+								"create-vacancy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Applicants for Vacancy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Employer/applicant-vacancies/{vacancyid}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Employer",
+								"applicant-vacancies",
+								"{vacancyid}"
+							],
+							"variable": [
+								{
+									"key": "vacancyid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate Vacancy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Employer/deactivate-vacancy/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Employer",
+								"deactivate-vacancy",
+								"{id}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vacancy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"title\": \"Updated Vacancy\",\n  \"description\": \"Updated Description\",\n  \"expiryDate\": \"2023-12-31T23:59:59\",\n  \"maxApplications\": 100\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Employer/update-vacancy",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Employer",
+								"update-vacancy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vacancy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Employer/delete-vacancy/{id}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Employer",
+								"delete-vacancy",
+								"{id}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJSb2xlIjoiRW1wbG95ZXIiLCJuYmYiOjE3MTgzMTk3MDIsImV4cCI6MTcxODM0MTMwMiwiaWF0IjoxNzE4MzE5NzAyfQ.CQyFSLluhAj3qvd4yhIAyuka2-UeMgH8e-J3R1OKQpk",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:7146"
+		}
+	]
+}
