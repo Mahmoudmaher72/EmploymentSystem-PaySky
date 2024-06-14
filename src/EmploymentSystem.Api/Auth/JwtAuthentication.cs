@@ -50,7 +50,10 @@ namespace EmploymentSystem.Api.Auth
 
                 if (roleClaim == null || roleClaim != _role)
                 {
-                    context.Result = new ForbidResult();
+                    context.Result = new JsonResult(new { message = $"Access denied. You need the '{_role}' role to access this resource." })
+                    {
+                        StatusCode = 403 // Forbidden
+                    };
                     return;
                 }
             }
