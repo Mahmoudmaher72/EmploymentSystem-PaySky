@@ -1,14 +1,11 @@
 ﻿using EmploymentSystem.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace EmploymentSystem.Domain.IRepositories
 {
     public interface IVacancyRepository : IRepository<Vacancy>
     {
+        Task<IEnumerable<Vacancy>> FindAsync(Expression<Func<Vacancy, bool>> predicate);
         Task<List<Vacancy>> GetActiveVacanciesAsync();
     }
 }

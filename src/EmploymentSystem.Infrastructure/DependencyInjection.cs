@@ -28,7 +28,7 @@ namespace EmploymentSystem.Infrastructure
             services.AddScoped<IVacancyRepository, VacancyRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IJwtService, JwtService>();
-            
+
             return services;
         }
     }

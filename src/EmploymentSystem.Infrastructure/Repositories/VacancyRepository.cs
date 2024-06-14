@@ -3,6 +3,7 @@ using EmploymentSystem.Domain.IRepositories;
 using EmploymentSystem.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq.Expressions;
 
 namespace EmploymentSystem.Infrastructure.Repositories
 {
@@ -45,5 +46,9 @@ namespace EmploymentSystem.Infrastructure.Repositories
             _context.Vacancies.Remove(vacancy);
         }
 
+        public async Task<IEnumerable<Vacancy>> FindAsync(Expression<Func<Vacancy, bool>> predicate)
+        {
+            return await _context.Vacancies.Where(predicate).ToListAsync();
+        }
     }
 }
